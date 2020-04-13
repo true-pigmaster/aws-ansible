@@ -12,3 +12,6 @@ Basic setup of the machines:
 2. web open on port 8080 from outsite and to ssh from within
 3. db server open on for ssh and sql from within. 
 waiting for mike's response about the database prefered setup
+
+Like a log:
+Lydia created S3Bucket for our config files. 
