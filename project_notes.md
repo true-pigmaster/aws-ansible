@@ -28,3 +28,5 @@ Like a log:
     accessed war file from S3 Bucket
     Deployed war file 
     created database connection
+    made the demo up and running on one of the servers manually
+    updates to presentation
