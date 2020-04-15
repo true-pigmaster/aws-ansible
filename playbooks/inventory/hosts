@@ -1,0 +1,22 @@
+web1 ansible_host='10.0.3.107'
+web2 ansible_host='10.0.3.136'
+
+[web]
+web1
+web2
+
+[db]
+localhost
+
+[stack:children]
+web
+db
+
+[py3-hosts]
+db
+
+[stack:vars]
+ansible_connection=ssh
+ansible_port=22
+ansible_ssh_private_key_file=/home/keys/lc_keys_ireland.pem
+ansible_user=ec2-user

@@ -1,0 +1,5 @@
+---
+# defaults file for todo-webapp
+db_host: localhost
+db_user: todo
+db_password: todo

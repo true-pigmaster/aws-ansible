@@ -1,0 +1,11 @@
+---
+# tasks file for todo-webapp
+- name: Copy war to tomcat
+  copy:
+    src: /war/todo-0.0.7-SNAPSHOT.war
+    dest: /var/lib/tomcat/webapps/todo.war
+
+- name: ensure application.properties is configured
+  template:
+    src: templates/application.properties.j2
+    dest: /var/lib/tomcat/webapps/todo/WEB-INF/classes/application.properties
