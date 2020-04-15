@@ -14,4 +14,17 @@ Basic setup of the machines:
 waiting for mike's response about the database prefered setup
 
 Like a log:
-Lydia created S3Bucket for our config files. 
+13.04 Lydia created S3Bucket for our config files. 
+14.04 Created two subnets:
+    lck-web-sn:      10.0.3.64
+    lck-control-sn:  10.0.3.0
+    created control machines with ip: 3.249.27.208
+    created low balancer
+    installed tomcat on two machines
+    created security groups for low balanacer and RDS
+15.04
+    Applied roles to EC's that are allowing access to S3 Bucket and war file created by Mike
+    Lydia created the PPT presentation (basic skeleton)
+    accessed war file from S3 Bucket
+    Deployed war file 
+    created database connection
