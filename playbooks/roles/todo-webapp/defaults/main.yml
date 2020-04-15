@@ -5,8 +5,8 @@ db_name: tododb
 db_user: todouser
 db_password: todouser123
 
-app_dist_bucket: 'lckfiles'
+app_dist_bucket: 'com-nttdata-ta-demo'
 app_package: todo
-app_version: '0.0.7-SNAPSHOT'
+app_version: '0.0.1-SNAPSHOT'
 
 tomcat_home: '/usr/share/tomcat'
