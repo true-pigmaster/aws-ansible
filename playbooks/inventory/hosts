@@ -1,9 +1,11 @@
 web1 ansible_host=10.0.3.107
 web2 ansible_host=10.0.3.136
+web3 ansible_host=10.0.3.133
 
 [web]
 web1
 web2
+web3
 
 [stack:children]
 web
