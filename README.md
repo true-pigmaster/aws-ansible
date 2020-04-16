@@ -4,8 +4,25 @@
 2. Create VPC
 3. Create internet and nat gateways. 
 4. Create S3 Bucket. 
-5. Create first public subnet allowing access from outside. 
-6. Create security group that will allow connections from specific ip's using required ports (eg.: your public ip for ssh using port 22)
+5. Create routing table with internet gateway
+6. Create first public subnet with previously created routing table (internet gateway) allowing access from outside. 
+7. Create EC2 instance (**Control**) that will be controlling deployment of application through ansible and will be accessible from outside. 
+    - create and assign securirty group that will allow ssh connection from outside.
+    - assign public subnet with route table (internet gateway) and generate public ip address.
+    - generate private key that will be used to authenticate connections to your instances. 
+8. Create a rout table with nat gateway, then when creating a private subnet assign the newly created route table (nat gateway) to subnet, it will allow outside communication required for updates and installing new packages. 
+8. Create EC2 instance (**Web**) that will be hosting the internet application. 
+    - assing previously created private subnet
+    - create and assign a new security group that will allow communication from security group assigned to **Control** on port 22. 
+    - use the same private key (or you can generate another one on your own)
+9. Connect to your machines. 
+   - locate the generated private key (**prikey**),
+   - open git bash (or any other conesole that has access to ssh client),
+   - use following commands in a folder with a key (it has to be done with first connectioin to **Web** through **Control**):
+     - `eval $(ssh-agent -s)`
+     - `ssh-add` `**prikey**` - in git bash
+     - `ssh -A  ec2-user@ip` - in git bash 
+     - `ssh-add -L` - on the mashin after connecting for the first time
 
 ## **Task**
 
