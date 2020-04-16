@@ -1,4 +1,10 @@
 # Aws-Ansible Case Study.
+
+## Files
+- aws_second_presentation.pptx - Power point presentation that will be presented to a client with our comments. 
+- playbooks - folder containing ansible playbooks that are used for automated deployment of the web application with configuration of the database instance,
+- dist - a compiled "war" file used for deployment of the application with tomcat server.
+
 ## **Step by step guide (more or less detailed)**
 1. Create AWS account. 
 2. Create VPC
@@ -23,6 +29,23 @@
      - `ssh-add` `**prikey**` - in git bash
      - `ssh -A  ec2-user@ip` - in git bash 
      - `ssh-add -L` - on the mashin after connecting for the first time
+     - after all of that your private key will be on machine, now `ssh {ip of the `**Web**`}` machine,
+10. On **Web** run following commands:
+    - `sudo yum update -y` - to update the pacakges that are already installed, 
+    - `sudo yum install tomcat tomcat-webapps -y` to isntall tomcat and webapps,
+    - `sudo systemctl enable tomcat` - to enable startup of tomcat service with every start of the machine,
+    - `sudo systemctl start tomcat` - to manually start the tomcat service,
+    - `sudo systemctl status tomcat` - to check the state of the service, desired is active (running), now `curl localhost:8080` if we will see a lot of text with linx and html tags it means that it works, 
+    - Extra (if needed):
+      - `echo "<h1>Web Server 1</h1>" >> /usr/share/tomcat/webapps/ROOT/index.html` will create index.html file that will help us identify the server that we are actually connected to. 
+      - the html file has a higher priority then the jsp file that is there by default, 
+      - we can check other apps (later in a browser) by typinng "{adddress of low balances or public address - default in this guide balancer}/sample or {...}/examples
+11. Create a new role with policy that allow access (from **Web**) to S3 Bucket to previously uploaded files, 
+12. Assing the role to **Web**, and when connected to **Web** execute:
+    - `aws s3 ls s3://{bucket name}/` - to list files in bucket that you have created, if successfull it means that all permissions and security, 
+    - navigate to tomcat webapps folder: `cd /usr/share/tomcat/webapps/`
+    - execute `sudo aws s3 cp s3://{bucket}/{filename.war} .` to download the war file to current directory. 
+    - if tomcat is running it should automatically create {filename} folder with deployed app. 
 
 ## **Task**
 
@@ -52,3 +75,7 @@ If you would prefer to deploy the application on a different database (e.g. Post
 The presentation will be at 10 am on Wednesday 15th April.
  
 As ever use Google, AWS Documentation, Udemy, each other, and me.
+
+# Authors:
+## Lydia Clavina George
+## Kamil Nowak
