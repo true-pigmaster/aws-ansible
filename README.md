@@ -46,6 +46,13 @@
     - navigate to tomcat webapps folder: `cd /usr/share/tomcat/webapps/`
     - execute `sudo aws s3 cp s3://{bucket}/{filename.war} .` to download the war file to current directory. 
     - if tomcat is running it should automatically create {filename} folder with deployed app. 
+    - install mysql, or mysql-client;
+    - test connection with admin, `mysql -u admin -p -P 3306 -h {hostname}`, enter password for admin, 
+    - create database `tododb`,
+    - create user todouser with password and grant him access to database tododb,
+    - login with user tododb to a database just like with admin. 
+13. If with database everything works, then open file application.properties in {filename_folder}/WEB-INF/classess/ and change the datadabase connection details. 
+14. connect server to low balancer
 
 ## **Task**
 
